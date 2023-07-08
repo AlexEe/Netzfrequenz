@@ -1,4 +1,6 @@
 using API.Data;
+using API.Extensions;
+using API.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddDbContext<DataContext>(opt => 
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -16,17 +19,17 @@ var app = builder.Build();
 app.MapControllers();
 
 // TO DO: Where does this go?
-async Task RunInBackground(TimeSpan timeSpan)
+// Get latest frequency readings every x seconds and store in db.
+async Task UpdateFrequencyReadings(TimeSpan timeSpan)
 {
     var periodicTimer = new PeriodicTimer(timeSpan);
     while (await periodicTimer.WaitForNextTickAsync())
     {
-        HttpClient http = new HttpClient();
-        var latestFreq = http.GetAsync("https://localhost:5001/api/frequency/update").Result.Content.ReadAsStringAsync().Result;
+        var latestFreq = 
         System.Console.WriteLine(latestFreq);
     }
 }
 
-RunInBackground(TimeSpan.FromSeconds(5));
+await UpdateFrequencyReadings(TimeSpan.FromSeconds(5));
 
 app.Run();

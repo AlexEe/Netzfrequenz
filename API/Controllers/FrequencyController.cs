@@ -1,5 +1,6 @@
 using API.Data;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,11 +10,11 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class FrequencyController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly iFrequencyRepository _frequencyRepository;
 
-        public FrequencyController(DataContext context)
+        public FrequencyController(iFrequencyRepository frequencyRepository)
         {
-            _context = context;
+            _frequencyRepository = frequencyRepository;
         }
 
         /// <summary>
@@ -22,9 +23,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FreqReading>>> GetReadings()
         {
-            var readings = await _context.Readings.ToListAsync();
-
-            return readings;
+            return Ok(await _frequencyRepository.GetReadingsAsync());
         }
 
         /// <summary>
@@ -33,26 +32,16 @@ namespace API.Controllers
         [HttpGet("latest")]
         public async Task<ActionResult<FreqReading>> GetLatestReading()
         {
-            var latestId = await _context.Readings.MaxAsync(x => x.Id);
-            return await _context.Readings.FirstOrDefaultAsync(x => x.Id == latestId);
-            
+            return await _frequencyRepository.GetLatestReadingAsync();
         }
 
         /// <summary>
         /// This request gets the current frequency value from netzfrequenz.info and stores it in the database.
         /// </summary>
         [HttpGet("update")]
-        public float Update()
+        public FreqReading Update()
         {
-            // Make request to get latest frequency value.
-            HttpClient http = new HttpClient();
-            var newFreqValue = float.Parse(http.GetAsync("https://www.netzfrequenz.info/json/act.json").Result.Content.ReadAsStringAsync().Result);
-
-            // Store result in db.
-            FreqReading newReading = new FreqReading{ Timestamp = DateTime.Now, Frequency = newFreqValue};
-            _context.Add(newReading);
-            _context.SaveChanges();
-            return newFreqValue;
+            return _frequencyRepository.Update();
         }
     }
 }
