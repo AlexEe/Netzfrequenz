@@ -101,10 +101,10 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 2. Optimierung des Backends
 
-- Bei Db Request: Nur Daten zurückgeben, die innerhalb der letzten Minute sind.
-- Abruf der Daten für den Graph per Websocket.
+- Abruf der Daten für den Graph per Websocket: SignalA benutzen (Windows Metaprotokoll)
 - Abruf Daten Primärregelleistung
 - Löschung der Frequenzdaten, z.B. nach einem Tag
+- ~~Bei Db Request: Nur Daten zurückgeben, die innerhalb der letzten Minute sind.~~
 - ~~Speichern der Daten in UTC und automatische Konvertierung zu Lokalzeit~~
 - ~~Refaktorierung von `Progam.cs`: Aktuell findet der sekündliche Abruf der aktuellen Messwerte der Frequenz direkt in `Program.cs` statt. Diese Funktion sollte ausgelagert werden, kurzfristig innerhalb der Web-API.~~
 - ~~Refaktorierung des ProjektAufbaus:~~

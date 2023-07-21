@@ -17,9 +17,11 @@ namespace DataAccess.Repository
 
         public async Task<IEnumerable<FreqReading>> GetReadings(int limit)
         {
+            var minuteAgo = DateTime.Now.AddMinutes(-2);
             var readings = await _context.Readings
                 .OrderByDescending(x => x.Timestamp)
                 .Take(limit)
+                .Where(x => x.Timestamp >= minuteAgo)
                 .ToListAsync();
             return readings;
         }
