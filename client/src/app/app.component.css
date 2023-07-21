@@ -1,4 +1,4 @@
 div {
     height: 100vh; 
-    background-color:rgb(251, 244, 226);
+    background-color:var(--bg-color);
 }

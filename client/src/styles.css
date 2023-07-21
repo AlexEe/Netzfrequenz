@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --default: rgb(0, 0, 0)
+    --bg-color: rgb(251, 244, 226);
+    --balanced-color: rgb(50,205,50);
+    --deadband-color: rgb(39,135,84);
+    --balancing-color: rgb(255, 200, 0);
+    --change-supply-color: rgb(255, 140, 0);
+    --emergency-color: rgb(255, 0, 0);
+  }

@@ -49,6 +49,9 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
     - Pop-up window soll auf Mitte der Seite erscheinen
+    - Aktualisierungsicon soll feste Position haben
+    - Anzeigen Primärregelleistung
+    - ~~Farbe der Frequenzzahl über root Farben gesetzt~~
     - ~~Farbe der Frequenzzahl ändert sich entsprechend der Höhe~~
     - ~~Zusätzlich zum aktuellen Wert in Klammer auch Zeit anzeigen mit Aktualisieren Button~~
     - ~~Erstellen der Maßnahmekategorien und Beschreibungen~~
@@ -100,7 +103,8 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 - Bei Db Request: Nur Daten zurückgeben, die innerhalb der letzten Minute sind.
 - Abruf der Daten für den Graph per Websocket.
-- Wechsel der Datenbank zu PostgreSQL und regelmäßige Löschung der Frequenzdaten, z.B. nach zwei Tagen.
+- Abruf Daten Primärregelleistung
+- Löschung der Frequenzdaten, z.B. nach einem Tag
 - ~~Speichern der Daten in UTC und automatische Konvertierung zu Lokalzeit~~
 - ~~Refaktorierung von `Progam.cs`: Aktuell findet der sekündliche Abruf der aktuellen Messwerte der Frequenz direkt in `Program.cs` statt. Diese Funktion sollte ausgelagert werden, kurzfristig innerhalb der Web-API.~~
 - ~~Refaktorierung des ProjektAufbaus:~~

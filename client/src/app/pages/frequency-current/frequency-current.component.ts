@@ -38,34 +38,34 @@ export class FrequencyCurrentComponent implements OnInit {
     
     switch(frequencyType) {
       case FrequencyType.balanced: {
-        return 'color: rgb(50,205,50)';
+        return 'current-frequency-balanced';
       }
       case FrequencyType.deadbandNegative: {
-        return 'color: rgb(39,135,84)';
+        return 'current-frequency-deadband';
       }
       case FrequencyType.negativeBalancing: {
-        return 'color: rgb(255, 200, 0)';
+        return 'current-frequency-balacing';
       }
       case FrequencyType.reduceSupply: {
-        return 'color: darkorange';
+        return 'current-frequency-change-supply';
       }
       case FrequencyType.disconnectSuppliers: {
-        return 'color: red';
+        return 'current-frequency-emergency';
       }
       case FrequencyType.deadbandPositive: {
-        return 'color: rgb(39,135,84)';
+        return 'current-frequency-deadband';
       }
       case FrequencyType.positivBalancing: {
-        return 'color: rgb(255, 200, 0)';
+        return 'current-frequency-balacing';
       }
       case FrequencyType.increaseSupply: {
-        return 'color: darkorange';
+        return 'current-frequency-change-supply';
       }
       case FrequencyType.reduceDemand: {
-        return 'color: red';
+        return 'current-frequency-emergency';
       }
       default: {
-        return 'color:black';
+        return 'default';
       }
     }
   }

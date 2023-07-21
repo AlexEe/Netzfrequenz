@@ -1,5 +1,5 @@
 <div class="chart-container">
-    <h2>Verlauf der Netzfrequenz im europäischen Verbundnetz</h2>
+    <h2>Verlauf der Stromfrequenz im europäischen Verbundnetz</h2>
     <h5 *ngIf="errorMessage != null">{{errorMessage}}</h5>
     <button class="btn btn-outline-success" [class.active]="limit == 60" type="button" (click)="updateLimit(60)">1 Minute</button>
     <button class="btn btn-outline-success" [class.active]="limit == 30" type="button" (click)="updateLimit(30)">30 Sekunden</button>
