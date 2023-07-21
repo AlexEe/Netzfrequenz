@@ -16,6 +16,7 @@
 
 #current-frequency {
   margin-top: 20px;
+  font-variant-numeric: tabular-nums;
 }
 
 #current-frequency h1 {

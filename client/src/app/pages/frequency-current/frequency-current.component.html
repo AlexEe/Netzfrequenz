@@ -2,7 +2,7 @@
     <h2>Aktueller Messwert der Stromfrequenz im europäischen Verbundnetz:</h2>
     <h5 *ngIf="errorMessage != null">{{errorMessage}}</h5>
     <div id="current-frequency">
-        <h1 [class]="getFrequencyColor()" (click)="popup = true">{{currentFrequency}} Hz </h1>
+        <h1 [class]="getFrequencyColor()" (click)="popup = true">{{currentFrequency | number:'.3-3':'en-US'}} Hz </h1>
         <h4>(Zeitpunkt der Messung: {{currentFrequencyTime | date:"HH:mm:ss"}} Uhr) 
             <i class="fa fa-refresh" aria-hidden="true" (click)="updateCurrentFrequency()"></i> 
         </h4>
