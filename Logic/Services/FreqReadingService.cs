@@ -50,6 +50,12 @@ namespace Logic.Services
             return _mapper.Map<IEnumerable<FreqReadingDto>>(readings);
         }
 
+        public async Task<IEnumerable<FreqReadingDto>> GetReadingsForPeriod(DateTimeOffset start, DateTimeOffset end)
+        {
+            var readings = await _repository.GetReadingsForPeriod(start, end);
+            return _mapper.Map<IEnumerable<FreqReadingDto>>(readings);
+        }
+
         public async Task<FreqReadingDto> GetLatestReading()
         {
             var reading = await _repository.GetLatestReading();

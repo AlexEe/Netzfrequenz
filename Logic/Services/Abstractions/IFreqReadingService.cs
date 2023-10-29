@@ -10,6 +10,7 @@ namespace Logic.Services.Abstractions
     {
         Task<FreqReadingDto> Update();
         Task<IEnumerable<FreqReadingDto>> GetReadings(int limit);
+        Task <IEnumerable<FreqReadingDto>> GetReadingsForPeriod(DateTimeOffset start, DateTimeOffset end);
         Task<FreqReadingDto> GetLatestReading();
     }
 }

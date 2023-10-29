@@ -46,7 +46,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 ## Nächste Schritte
 
 1. Design und Ausbau des Angular Frontends
-
+- Endpunkt um Daten vor x Minuten für eine Minute abzurufen
 - Neue Startseite nur für aktuelle Frequenz mit Informationen zu eventuellen Maßnahmen
     - Pop-up window soll auf Mitte der Seite erscheinen
     - Anzeigen Primärregelleistung
@@ -100,7 +100,7 @@ Das Frontend kann jetzt unter `https://localhost:4200/` aufgerufen werden.
 
 
 2. Optimierung des Backends
-
+- Endpunkt um Daten vor x Minuten für eine Minute abzurufen
 - Abruf der Daten für den Graph per Websocket: SignalA benutzen (Windows Metaprotokoll)
 - Abruf Daten Primärregelleistung
 - Löschung der Frequenzdaten, z.B. nach einem Tag

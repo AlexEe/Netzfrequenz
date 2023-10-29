@@ -26,6 +26,16 @@ namespace DataAccess.Repository
             return readings;
         }
 
+        public async Task<IEnumerable<FreqReading>> GetReadingsForPeriod(DateTimeOffset start, DateTimeOffset end)
+        {
+            var readings = await _context.Readings
+                .OrderByDescending(x => x.Timestamp)
+                .Where(x => x.Timestamp <= end) 
+                .Where(x => x.Timestamp >= start) 
+                .ToListAsync();
+            return readings;
+        }
+
         public async Task<FreqReading> GetLatestReading()
         {
             var latestId = await _context.Readings.MaxAsync(x => x.Id);

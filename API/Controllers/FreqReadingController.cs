@@ -29,6 +29,17 @@ namespace API.Controllers
         }
 
         /// <summary>
+        /// This request gets a list of frequency readings from the database for a given time period.
+        /// </summary>
+        [HttpGet("past")]
+
+        public async Task<ActionResult<IEnumerable<FreqReadingDto>>> GetReadingsForPeriod(DateTimeOffset start, DateTimeOffset end)
+        {
+            var getReadingsForPeriod = await _service.GetReadingsForPeriod(start, end);
+            return Ok(getReadingsForPeriod);
+        }
+
+        /// <summary>
         /// This request gets the latest frequency reading from the database.
         /// </summary>
         [HttpGet("latest")]
